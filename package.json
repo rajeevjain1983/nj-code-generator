@@ -1,0 +1,19 @@
+{
+  "name": "nj-code-generator",
+  "version": "1.0.3",
+  "description": "nj-code-generator is a simple cli for generating new Route and components",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "generate": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "plop": "plop"
+  },
+  "author": "rajeevjain1508@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "plop": "^4.0.1"
+  }
+}
