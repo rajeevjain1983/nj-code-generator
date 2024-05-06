@@ -2,8 +2,8 @@
 export default function (plop) {
 
   const rootFolder=process.cwd();
-  const routePath="/apps/examples/app/";
-  const componentPath="/apps/examples/components/";
+  const routePath="/app/";
+  const componentPath="/components/";
   plop.setGenerator('NextAppRoute', {
     description: 'Generate a Next App Route structure',
     prompts: [
