@@ -1,6 +1,6 @@
 {
   "name": "nj-code-generator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "nj-code-generator is a simple cli for generating new Route and components",
   "main": "index.js",
   "type": "module",

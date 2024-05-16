@@ -42,23 +42,44 @@ export default function (plop) {
         message: 'Component name?',
         default: 'HelloProgram',
       },
+      // {
+      //   type: 'input',
+      //   name: 'isCustomBoundaryWrapped',
+      //   message: 'Wrapped with Custom Boundary?',
+      //   default: 'Yes',
+      // },
     ],
-    actions: [
+    
+   
+    
+   actions:(data)=>{
+   const {isCustomBoundaryWrapped="Yes"}=data;
+   let componentTemplate='plop-templates/component.tsx.hbs';
+   let testComponentTemplate= 'plop-templates/component.spec.tsx.hbs';
+   console.log("isCustomBoundaryWrapped",isCustomBoundaryWrapped);
+   if(isCustomBoundaryWrapped?.toLowerCase()==="yes"){
+    componentTemplate='plop-templates/componentWrappedWithCustom.tsx.hbs';
+    testComponentTemplate= 'plop-templates/componentWrappedWithCustom.spec.tsx.hbs';
+   }
+   const  actions= [
       {
         type: 'add',
         path: `${rootFolder}${componentPath}{{name}}/index.tsx`,
-        templateFile: 'plop-templates/component.tsx.hbs',
+        templateFile: componentTemplate,
       },
       {
         type: 'add',
         path: `${rootFolder}${componentPath}{{name}}/index.spec.tsx`,
-        templateFile: 'plop-templates/component.spec.tsx.hbs',
+        templateFile: testComponentTemplate,
       },
       {
         type: 'add',
         path: `${rootFolder}${componentPath}{{name}}/index.module.css`,
         templateFile: 'plop-templates/component.module.css.hbs',
       },
-    ],
+    ];
+    return actions;
+   }
+   
   });
 };

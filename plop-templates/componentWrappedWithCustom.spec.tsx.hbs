@@ -1,0 +1,62 @@
+import React from 'react';
+import { render,screen } from '@testing-library/react';
+import {{pascalCase name}} from './index';
+
+describe('{{pascalCase name}} Component', () => {
+  it('renders HelloProgram component without crashing', () => {
+    render(<{{pascalCase name}} />);
+    expect(screen.getByText("Related Products.")).toBeInTheDocument();
+   const helloText = screen.getByText(/Welcome to HelloProgram!/i);
+    expect(helloText).toBeInTheDocument();
+  });
+
+ it('renders fallback UI when there is an error', () => {
+    // Mock CustomErrorBoundary to always throw an error
+    jest.mock('@examples/components/CustomErrorBoundary', () => ({
+      __esModule: true,
+      default: function CustomErrorBoundary({
+        children,
+      }: {
+        children: React.ReactNode;
+      }) {
+        return children;
+      },
+    }));
+
+    // Render HelloProgram component
+     render(<{{pascalCase name}} />);
+
+    // Assert that fallback UI is rendered
+    const relatedProductsText = screen.getByText(/Related Products./i);
+    expect(relatedProductsText).toBeInTheDocument();
+  });
+
+  it('renders related product images in fallback UI', () => {
+    // Mock CustomErrorBoundary to always throw an error
+    jest.mock('@examples/components/CustomErrorBoundary', () => ({
+      __esModule: true,
+      default: function CustomErrorBoundary({
+        children,
+      }: {
+        children: React.ReactNode;
+      }) {
+        return children;
+      },
+    }));
+
+    // Render HelloProgram component
+     render(<{{pascalCase name}} />);
+
+    // Assert that all product images are rendered
+    const productImages = screen.getAllByAltText(/Product \d/i);
+    expect(productImages.length).toBeGreaterThan(0);
+  });
+
+  // Add more test cases as needed
+
+});
+
+
+
+
+
